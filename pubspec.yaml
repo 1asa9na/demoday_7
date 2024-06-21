@@ -31,6 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  options_repository:
+    path: ./packages/options_repository
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -41,6 +44,7 @@ dependencies:
   auto_route_generator: ^8.0.0
   freezed_annotation: ^2.4.1
   bloc: ^8.1.4
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -101,5 +105,7 @@ flutter:
           weight: 400
         - asset: fonts/OpenSans-SemiBold.ttf
           weight: 600
+        - asset: fonts/OpenSans-Bold.ttf
+          weight: 700
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

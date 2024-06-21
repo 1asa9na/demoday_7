@@ -1,3 +1,4 @@
+import 'package:demoday_7/src/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 final theme = ThemeData(
@@ -7,28 +8,36 @@ final theme = ThemeData(
 );
 
 const textTheme = TextTheme(
-  bodyMedium: TextStyle(
+  bodyLarge: TextStyle(
     fontFamily: mainFontFamily,
     fontSize: 24,
+    fontWeight: FontWeight.w700,
+  ),
+  bodyMedium: TextStyle(
+    fontFamily: mainFontFamily,
+    fontSize: 18,
     fontWeight: FontWeight.w600,
   ),
   displayLarge: TextStyle(
     fontFamily: mainFontFamily,
-    fontSize: 48,
+    fontSize: 32,
     fontWeight: FontWeight.w600,
+    color: AppColors.black,
   ),
   displayMedium: TextStyle(
     fontFamily: mainFontFamily,
-    fontSize: 32,
+    fontSize: 24,
     fontWeight: FontWeight.w600,
+    color: AppColors.black,
   ),
   displaySmall: TextStyle(
     fontFamily: mainFontFamily,
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: FontWeight.w400,
+    color: AppColors.darkGray,
   ),
 );
 
-const iconThemeData = IconThemeData(size: 24);
+const iconThemeData = IconThemeData(size: 18);
 
 const mainFontFamily = 'Open Sans';
