@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:demoday_7/src/features/select_file/select_file_widget.dart';
 import 'package:demoday_7/src/features/select_options/select_options_widget.dart';
 import 'package:demoday_7/src/themes/app_strings.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Widget> widgetsList = [const SelectOptionsWidget()];
+  List<Widget> widgetsList = [
+    const SelectOptionsWidget(),
+    const SelectFileWidget(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +32,11 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: ListView.builder(
+              child: ListView.separated(
                 itemCount: widgetsList.length,
                 itemBuilder: (context, index) => widgetsList[index],
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 20),
               ),
             ),
           ],

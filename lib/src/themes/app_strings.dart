@@ -6,4 +6,6 @@ abstract final class AppStrings {
   static const String determineViewSubline =
       'Нажмите на карточки, чтобы выбрать';
   static const String logIn = 'Войти';
+  static const String pickImage = 'Выбрать картинку';
+  static const String pickNewImage = 'Выбрать новую картинку';
 }

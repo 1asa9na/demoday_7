@@ -1,4 +1,5 @@
 import 'package:demoday_7/src/app_router.dart';
+import 'package:demoday_7/src/features/select_file/bloc/select_file_bloc.dart';
 import 'package:demoday_7/src/features/select_options/bloc/select_options_bloc.dart';
 import 'package:demoday_7/src/pages/home/model/home_model.dart';
 import 'package:demoday_7/src/themes/theme.dart';
@@ -19,6 +20,10 @@ class App extends StatelessWidget {
               optionsRepository:
                   RepositoryProvider.of<OptionsRepository>(context))
             ..add(const SelectOptionsEvent.started()),
+        ),
+        BlocProvider<SelectFileBloc>(
+          create: (context) =>
+              SelectFileBloc()..add(const SelectFileEvent.started()),
         ),
       ],
       child: MultiProvider(
