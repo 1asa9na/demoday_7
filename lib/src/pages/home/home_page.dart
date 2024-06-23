@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:demoday_7/src/features/input_parameters/input_parameters_widget.dart';
 import 'package:demoday_7/src/features/select_file/select_file_widget.dart';
 import 'package:demoday_7/src/features/select_options/select_options_widget.dart';
 import 'package:demoday_7/src/themes/app_strings.dart';
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> widgetsList = [
     const SelectOptionsWidget(),
     const SelectFileWidget(),
+    const InputParametersWidget(),
   ];
 
   @override

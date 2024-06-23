@@ -33,6 +33,8 @@ dependencies:
 
   options_repository:
     path: ./packages/options_repository
+  parameters_repository:
+    path: ./packages/parameters_repository
 
 
   # The following adds the Cupertino Icons font to your application.
