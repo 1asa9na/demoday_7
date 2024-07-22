@@ -14,6 +14,7 @@ class HomeModel with ChangeNotifier {
     'Thread': 0,
     'is_fabric': 0,
     'is_knitwear': 0,
+    'imageBytes': null,
   };
 
   void changeOption(String key) {
@@ -30,7 +31,7 @@ class HomeModel with ChangeNotifier {
       'bool' => int.parse(value),
       'double' => double.parse(value),
       'int' => int.parse(value),
-      _ => String,
+      _ => value,
     };
     _parameters[key] = value;
   }

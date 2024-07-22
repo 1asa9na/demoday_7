@@ -32,7 +32,7 @@ class SelectFileBloc extends Bloc<SelectFileEvent, SelectFileState> {
       final pickedImage =
           await _imagePicker.pickImage(source: ImageSource.gallery);
       if (pickedImage == null) {
-        throw Exception();
+        emit(const SelectFileState.noImageSelected());
       } else {
         final pickedImageBytes = await pickedImage.readAsBytes();
         emit(SelectFileState.success(pickedImageBytes: pickedImageBytes));

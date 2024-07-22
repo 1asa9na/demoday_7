@@ -35,7 +35,10 @@ dependencies:
     path: ./packages/options_repository
   parameters_repository:
     path: ./packages/parameters_repository
-
+  response_repository:
+    path: ./packages/response_repository
+  api_client:
+    path: ./packages/api_client
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -48,6 +51,8 @@ dependencies:
   bloc: ^8.1.4
   provider: ^6.1.2
   image_picker: ^1.1.2
+  dio: ^5.5.0+1
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +83,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/logo.png
+    - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
