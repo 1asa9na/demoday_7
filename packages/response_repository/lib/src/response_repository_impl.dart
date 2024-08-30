@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:api_client/api_client.dart';
 import 'package:dio/dio.dart' as dio;
@@ -7,8 +8,11 @@ import 'package:response_repository/src/response_repository.dart';
 
 final class FakeResponseRepositoryImpl implements ResponseRepository {
   @override
-  Future<ResponseBody> fetch(
-      {required Map<String, dynamic> data, required String option}) async {
+  Future<ResponseBody> fetch({
+    required Map<String, dynamic> data,
+    required String option,
+    required String token,
+  }) async {
     await Future.delayed(const Duration(seconds: 1));
     return const ResponseBody(
       option: 'stiffdrape',
@@ -32,8 +36,8 @@ final class ResponseRepositoryImpl implements ResponseRepository {
   };
 
   static const Map<String, List<String>> parameters = {
-    'type': ['imageBytes'],
-    'breath': ['imageBytes'],
+    'type': ['img'],
+    'breath': ['img'],
     'stiffdrape': [
       'Height',
       'Density',
@@ -48,18 +52,22 @@ final class ResponseRepositoryImpl implements ResponseRepository {
       : _apiClient = apiClient;
 
   @override
-  Future<ResponseBody> fetch(
-      {required Map<String, dynamic> data, required String option}) async {
+  Future<ResponseBody> fetch({
+    required Map<String, dynamic> data,
+    required String option,
+    required String token,
+  }) async {
     final dio.Response<dynamic> response = await _apiClient.dio.post(
       endpoints[option]!,
-      options: dio.Options(
-        responseType: dio.ResponseType.json,
-        contentType: dio.Headers.jsonContentType,
-      ),
-      data: {for (var item in parameters[option]!) item: data[item]},
+      options: dio.Options(headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token"
+      }),
+      data:
+          jsonEncode({for (var item in parameters[option]!) item: data[item]}),
     );
 
-    final result = ResponseBody.fromJson(jsonDecode(response.data));
+    final result = ResponseBody.fromJson(response.data);
     return result;
   }
 }

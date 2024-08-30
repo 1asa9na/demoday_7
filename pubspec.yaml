@@ -37,6 +37,10 @@ dependencies:
     path: ./packages/parameters_repository
   response_repository:
     path: ./packages/response_repository
+  authentication_repository:
+    path: ./packages/authentication_repository
+  token_repository:
+    path: ./packages/token_repository
   api_client:
     path: ./packages/api_client
 
@@ -52,7 +56,7 @@ dependencies:
   provider: ^6.1.2
   image_picker: ^1.1.2
   dio: ^5.5.0+1
-  flutter_dotenv: ^5.1.0
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
@@ -83,7 +87,6 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/logo.png
-    - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

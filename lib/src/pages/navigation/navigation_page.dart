@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:demoday_7/src/app_router.dart';
 import 'package:demoday_7/src/pages/navigation/widgets/app_logo.dart';
 import 'package:demoday_7/src/themes/app_colors.dart';
 import 'package:demoday_7/src/themes/app_strings.dart';
@@ -35,9 +36,13 @@ class _NavigationPageState extends State<NavigationPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const AppLogo(),
+                  AppLogo(route: () {
+                    context.router.push(const HomeRoute());
+                  }),
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.router.push(const LoginRoute());
+                    },
                     style: appBarOutlinedButtonStyle,
                     child: const Text(
                       AppStrings.logIn,
@@ -49,7 +54,7 @@ class _NavigationPageState extends State<NavigationPage> {
           ),
         ),
       ),
-      body: AutoRouter(),
+      body: const AutoRouter(),
     );
   }
 }

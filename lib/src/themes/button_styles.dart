@@ -101,3 +101,25 @@ final activeSecondaryOutlinedButtonStyle = ButtonStyle(
     return textTheme.bodyMedium!.copyWith(color: AppColors.white);
   }),
 );
+
+final normalSecondaryTextButtonStyle = ButtonStyle(
+  padding: const MaterialStatePropertyAll<EdgeInsetsGeometry>(
+    EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+  ),
+  overlayColor: MaterialStateProperty.resolveWith(
+    (states) {
+      if (states.contains(MaterialState.pressed)) return AppColors.white;
+      return AppColors.lightGray;
+    },
+  ),
+  foregroundColor: MaterialStateProperty.resolveWith((states) {
+    if (states.contains(MaterialState.pressed)) return AppColors.darkGray;
+    return AppColors.black;
+  }),
+  textStyle: MaterialStateProperty.resolveWith((states) {
+    if (states.contains(MaterialState.pressed)) {
+      return textTheme.bodyMedium!.copyWith(color: AppColors.darkGray);
+    }
+    return textTheme.bodyMedium!.copyWith(color: AppColors.black);
+  }),
+);

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:demoday_7/src/features/get_results/get_results_widget.dart';
 import 'package:demoday_7/src/features/input_parameters/input_parameters_widget.dart';
 import 'package:demoday_7/src/features/select_file/select_file_widget.dart';
 import 'package:demoday_7/src/features/select_options/select_options_widget.dart';
@@ -19,6 +20,7 @@ class _HomePageState extends State<HomePage> {
     const SelectOptionsWidget(),
     const SelectFileWidget(),
     const InputParametersWidget(),
+    const GetResultsWidget(),
   ];
 
   @override

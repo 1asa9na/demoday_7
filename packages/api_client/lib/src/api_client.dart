@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 class ApiClient implements Interceptor {
   late Dio _dio;
   late String _baseUrl;
+  String? _token;
   String get baseUrl => _baseUrl;
   Dio get dio => _dio;
   ApiClient({required baseUrl}) {
@@ -19,6 +20,11 @@ class ApiClient implements Interceptor {
         },
       ),
     )..interceptors.add(this);
+  }
+
+  set token(String token) {
+    _token = token;
+    _dio.options.headers['Authorization'] = 'Bearer $_token';
   }
 
   @override

@@ -19,19 +19,23 @@ mixin _$GetResultsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() post,
+    required TResult Function(
+            Map<String, dynamic> data, Map<String, bool> options)
+        post,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? post,
+    TResult? Function(Map<String, dynamic> data, Map<String, bool> options)?
+        post,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? post,
+    TResult Function(Map<String, dynamic> data, Map<String, bool> options)?
+        post,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +117,9 @@ class _$GetResultsStartedImpl implements _GetResultsStarted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() post,
+    required TResult Function(
+            Map<String, dynamic> data, Map<String, bool> options)
+        post,
   }) {
     return started();
   }
@@ -122,7 +128,8 @@ class _$GetResultsStartedImpl implements _GetResultsStarted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? post,
+    TResult? Function(Map<String, dynamic> data, Map<String, bool> options)?
+        post,
   }) {
     return started?.call();
   }
@@ -131,7 +138,8 @@ class _$GetResultsStartedImpl implements _GetResultsStarted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? post,
+    TResult Function(Map<String, dynamic> data, Map<String, bool> options)?
+        post,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -181,6 +189,8 @@ abstract class _$$GetResultsPostImplCopyWith<$Res> {
   factory _$$GetResultsPostImplCopyWith(_$GetResultsPostImpl value,
           $Res Function(_$GetResultsPostImpl) then) =
       __$$GetResultsPostImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, dynamic> data, Map<String, bool> options});
 }
 
 /// @nodoc
@@ -190,54 +200,109 @@ class __$$GetResultsPostImplCopyWithImpl<$Res>
   __$$GetResultsPostImplCopyWithImpl(
       _$GetResultsPostImpl _value, $Res Function(_$GetResultsPostImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+    Object? options = null,
+  }) {
+    return _then(_$GetResultsPostImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      options: null == options
+          ? _value._options
+          : options // ignore: cast_nullable_to_non_nullable
+              as Map<String, bool>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetResultsPostImpl implements _GetResultsPost {
-  const _$GetResultsPostImpl();
+  const _$GetResultsPostImpl(
+      {required final Map<String, dynamic> data,
+      required final Map<String, bool> options})
+      : _data = data,
+        _options = options;
+
+  final Map<String, dynamic> _data;
+  @override
+  Map<String, dynamic> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
+  final Map<String, bool> _options;
+  @override
+  Map<String, bool> get options {
+    if (_options is EqualUnmodifiableMapView) return _options;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_options);
+  }
 
   @override
   String toString() {
-    return 'GetResultsEvent.post()';
+    return 'GetResultsEvent.post(data: $data, options: $options)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetResultsPostImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetResultsPostImpl &&
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            const DeepCollectionEquality().equals(other._options, _options));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_data),
+      const DeepCollectionEquality().hash(_options));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetResultsPostImplCopyWith<_$GetResultsPostImpl> get copyWith =>
+      __$$GetResultsPostImplCopyWithImpl<_$GetResultsPostImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() post,
+    required TResult Function(
+            Map<String, dynamic> data, Map<String, bool> options)
+        post,
   }) {
-    return post();
+    return post(data, options);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? post,
+    TResult? Function(Map<String, dynamic> data, Map<String, bool> options)?
+        post,
   }) {
-    return post?.call();
+    return post?.call(data, options);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? post,
+    TResult Function(Map<String, dynamic> data, Map<String, bool> options)?
+        post,
     required TResult orElse(),
   }) {
     if (post != null) {
-      return post();
+      return post(data, options);
     }
     return orElse();
   }
@@ -275,7 +340,15 @@ class _$GetResultsPostImpl implements _GetResultsPost {
 }
 
 abstract class _GetResultsPost implements GetResultsEvent {
-  const factory _GetResultsPost() = _$GetResultsPostImpl;
+  const factory _GetResultsPost(
+      {required final Map<String, dynamic> data,
+      required final Map<String, bool> options}) = _$GetResultsPostImpl;
+
+  Map<String, dynamic> get data;
+  Map<String, bool> get options;
+  @JsonKey(ignore: true)
+  _$$GetResultsPostImplCopyWith<_$GetResultsPostImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -283,24 +356,24 @@ mixin _$GetResultsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ResponseBody> response) success,
-    required TResult Function() error,
+    required TResult Function(List<ResponseBody> responses) success,
+    required TResult Function(String message) error,
     required TResult Function() blank,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ResponseBody> response)? success,
-    TResult? Function()? error,
+    TResult? Function(List<ResponseBody> responses)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? blank,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ResponseBody> response)? success,
-    TResult Function()? error,
+    TResult Function(List<ResponseBody> responses)? success,
+    TResult Function(String message)? error,
     TResult Function()? blank,
     required TResult orElse(),
   }) =>
@@ -389,8 +462,8 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ResponseBody> response) success,
-    required TResult Function() error,
+    required TResult Function(List<ResponseBody> responses) success,
+    required TResult Function(String message) error,
     required TResult Function() blank,
   }) {
     return loading();
@@ -400,8 +473,8 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ResponseBody> response)? success,
-    TResult? Function()? error,
+    TResult? Function(List<ResponseBody> responses)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? blank,
   }) {
     return loading?.call();
@@ -411,8 +484,8 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ResponseBody> response)? success,
-    TResult Function()? error,
+    TResult Function(List<ResponseBody> responses)? success,
+    TResult Function(String message)? error,
     TResult Function()? blank,
     required TResult orElse(),
   }) {
@@ -470,7 +543,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ResponseBody> response});
+  $Res call({List<ResponseBody> responses});
 }
 
 /// @nodoc
@@ -484,12 +557,12 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? response = null,
+    Object? responses = null,
   }) {
     return _then(_$SuccessImpl(
-      response: null == response
-          ? _value._response
-          : response // ignore: cast_nullable_to_non_nullable
+      responses: null == responses
+          ? _value._responses
+          : responses // ignore: cast_nullable_to_non_nullable
               as List<ResponseBody>,
     ));
   }
@@ -498,20 +571,20 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements Success {
-  const _$SuccessImpl({required final List<ResponseBody> response})
-      : _response = response;
+  const _$SuccessImpl({required final List<ResponseBody> responses})
+      : _responses = responses;
 
-  final List<ResponseBody> _response;
+  final List<ResponseBody> _responses;
   @override
-  List<ResponseBody> get response {
-    if (_response is EqualUnmodifiableListView) return _response;
+  List<ResponseBody> get responses {
+    if (_responses is EqualUnmodifiableListView) return _responses;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_response);
+    return EqualUnmodifiableListView(_responses);
   }
 
   @override
   String toString() {
-    return 'GetResultsState.success(response: $response)';
+    return 'GetResultsState.success(responses: $responses)';
   }
 
   @override
@@ -519,12 +592,13 @@ class _$SuccessImpl implements Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._response, _response));
+            const DeepCollectionEquality()
+                .equals(other._responses, _responses));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_response));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_responses));
 
   @JsonKey(ignore: true)
   @override
@@ -536,35 +610,35 @@ class _$SuccessImpl implements Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ResponseBody> response) success,
-    required TResult Function() error,
+    required TResult Function(List<ResponseBody> responses) success,
+    required TResult Function(String message) error,
     required TResult Function() blank,
   }) {
-    return success(response);
+    return success(responses);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ResponseBody> response)? success,
-    TResult? Function()? error,
+    TResult? Function(List<ResponseBody> responses)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? blank,
   }) {
-    return success?.call(response);
+    return success?.call(responses);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ResponseBody> response)? success,
-    TResult Function()? error,
+    TResult Function(List<ResponseBody> responses)? success,
+    TResult Function(String message)? error,
     TResult Function()? blank,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(response);
+      return success(responses);
     }
     return orElse();
   }
@@ -608,10 +682,10 @@ class _$SuccessImpl implements Success {
 }
 
 abstract class Success implements GetResultsState {
-  const factory Success({required final List<ResponseBody> response}) =
+  const factory Success({required final List<ResponseBody> responses}) =
       _$SuccessImpl;
 
-  List<ResponseBody> get response;
+  List<ResponseBody> get responses;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -622,6 +696,8 @@ abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -631,60 +707,84 @@ class __$$ErrorImplCopyWithImpl<$Res>
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ErrorImpl implements Error {
-  const _$ErrorImpl();
+  const _$ErrorImpl({required this.message});
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'GetResultsState.error()';
+    return 'GetResultsState.error(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ResponseBody> response) success,
-    required TResult Function() error,
+    required TResult Function(List<ResponseBody> responses) success,
+    required TResult Function(String message) error,
     required TResult Function() blank,
   }) {
-    return error();
+    return error(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ResponseBody> response)? success,
-    TResult? Function()? error,
+    TResult? Function(List<ResponseBody> responses)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? blank,
   }) {
-    return error?.call();
+    return error?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ResponseBody> response)? success,
-    TResult Function()? error,
+    TResult Function(List<ResponseBody> responses)? success,
+    TResult Function(String message)? error,
     TResult Function()? blank,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(message);
     }
     return orElse();
   }
@@ -728,7 +828,12 @@ class _$ErrorImpl implements Error {
 }
 
 abstract class Error implements GetResultsState {
-  const factory Error() = _$ErrorImpl;
+  const factory Error({required final String message}) = _$ErrorImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -770,8 +875,8 @@ class _$BlankImpl implements Blank {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ResponseBody> response) success,
-    required TResult Function() error,
+    required TResult Function(List<ResponseBody> responses) success,
+    required TResult Function(String message) error,
     required TResult Function() blank,
   }) {
     return blank();
@@ -781,8 +886,8 @@ class _$BlankImpl implements Blank {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ResponseBody> response)? success,
-    TResult? Function()? error,
+    TResult? Function(List<ResponseBody> responses)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? blank,
   }) {
     return blank?.call();
@@ -792,8 +897,8 @@ class _$BlankImpl implements Blank {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ResponseBody> response)? success,
-    TResult Function()? error,
+    TResult Function(List<ResponseBody> responses)? success,
+    TResult Function(String message)? error,
     TResult Function()? blank,
     required TResult orElse(),
   }) {

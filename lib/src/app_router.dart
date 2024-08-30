@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:demoday_7/src/pages/authorization/login/login_page.dart';
+import 'package:demoday_7/src/pages/authorization/signup/signup_page.dart';
 import 'package:demoday_7/src/pages/home/home_page.dart';
 import 'package:demoday_7/src/pages/navigation/navigation_page.dart';
 
@@ -13,6 +15,8 @@ class AppRouter extends _$AppRouter {
           page: NavigationRoute.page,
           children: [
             AutoRoute(path: HomePage.path, page: HomeRoute.page),
+            AutoRoute(path: LoginPage.path, page: LoginRoute.page),
+            AutoRoute(path: SignupPage.path, page: SignupRoute.page),
           ],
         ),
       ];

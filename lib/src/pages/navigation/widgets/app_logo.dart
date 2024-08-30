@@ -2,12 +2,13 @@ import 'package:demoday_7/src/themes/images.dart';
 import 'package:flutter/material.dart';
 
 class AppLogo extends StatelessWidget {
-  const AppLogo({super.key});
+  final void Function()? route;
+  const AppLogo({super.key, this.route});
 
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
-      onPressed: () {},
+      onPressed: route,
       icon: const Image(
         image: AssetImage(ImageSources.logo),
         height: 40,

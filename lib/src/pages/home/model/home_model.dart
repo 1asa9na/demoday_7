@@ -8,13 +8,13 @@ class HomeModel with ChangeNotifier {
   };
 
   final Map<String, dynamic> _parameters = {
-    'Height': 0,
+    'Height': 0.1,
     'Density': 0,
     'Consist': 0,
     'Thread': 0,
     'is_fabric': 0,
     'is_knitwear': 0,
-    'imageBytes': null,
+    'img': null,
   };
 
   void changeOption(String key) {
@@ -25,6 +25,10 @@ class HomeModel with ChangeNotifier {
   bool getOption(String key) {
     return _options[key]!;
   }
+
+  Map<String, bool> getOptions() => _options;
+
+  Map<String, dynamic> getParameters() => _parameters;
 
   void setParameter(String key, dynamic value, String type) {
     value = switch (type) {
