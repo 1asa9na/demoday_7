@@ -6,7 +6,7 @@ final class OptionsRepositoryImpl implements OptionsRepository {
   Future<List<Option>> fetch() async {
     await Future.delayed(const Duration(seconds: 1));
     return const [
-      Option(name: "Тип материала", option: "type"),
+      Option(name: "Вид материала", option: "type"),
       Option(name: "Воздухопроницаемость", option: "breath"),
       Option(name: "Жёсткость и драпируемость", option: "stiffdrape"),
     ];

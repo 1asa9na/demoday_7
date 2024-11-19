@@ -1,10 +1,12 @@
 import 'package:demoday_7/src/features/select_options/bloc/select_options_bloc.dart';
+import 'package:demoday_7/src/pages/home/bloc/home_bloc.dart' as home;
 import 'package:demoday_7/src/pages/home/model/home_model.dart';
 import 'package:demoday_7/src/themes/app_colors.dart';
 import 'package:demoday_7/src/themes/app_strings.dart';
 import 'package:demoday_7/src/themes/button_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class SelectOptionsWidget extends StatefulWidget {
   const SelectOptionsWidget({super.key});
@@ -52,6 +54,17 @@ class SelectOptionsWidgetState extends State<SelectOptionsWidget> {
                                           .read<HomeModel>()
                                           .changeOption(i.option);
                                     });
+                                    var provider = Provider.of<HomeModel>(
+                                        context,
+                                        listen: false);
+                                    context.read<home.HomeBloc>().add(
+                                          home.HomeEvent.started(
+                                            picture: provider
+                                                .getOptionCount('picture'),
+                                            numeric: provider
+                                                .getOptionCount('numeric'),
+                                          ),
+                                        );
                                   },
                                   style: context
                                           .watch<HomeModel>()

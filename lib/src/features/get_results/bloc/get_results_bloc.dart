@@ -41,11 +41,15 @@ class GetResultsBloc extends Bloc<GetResultsEvent, GetResultsState> {
     final String? token = _tokenRepository.getToken();
     if (token != null) {
       try {
-        for (int i = 0; i < event.options.length; i++) {
-          final ResponseBody response = await _responseRepository.fetch(
-              data: event.data, option: options[i], token: token);
-          responses.add(response);
-        }
+        event.options.forEach(
+          (k, v) async {
+            if (v) {
+              final ResponseBody response = await _responseRepository.fetch(
+                  data: event.data, option: k, token: token);
+              responses.add(response);
+            }
+          },
+        );
         emit(GetResultsState.success(responses: responses));
       } catch (e) {
         emit(const GetResultsState.error(message: AppStrings.logError));

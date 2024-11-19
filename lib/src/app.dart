@@ -16,6 +16,8 @@ import 'package:options_repository/options_repository.dart';
 import 'package:response_repository/response_repository.dart';
 import 'package:token_repository/token_repository.dart';
 
+import 'pages/home/bloc/home_bloc.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -23,6 +25,13 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<HomeBloc>(
+          create: (context) => HomeBloc()
+            ..add(const HomeEvent.started(
+              picture: 0,
+              numeric: 0,
+            )),
+        ),
         BlocProvider<SelectOptionsBloc>(
           create: (context) => SelectOptionsBloc(
               optionsRepository:

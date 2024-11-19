@@ -3,8 +3,10 @@ import 'package:demoday_7/src/features/get_results/get_results_widget.dart';
 import 'package:demoday_7/src/features/input_parameters/input_parameters_widget.dart';
 import 'package:demoday_7/src/features/select_file/select_file_widget.dart';
 import 'package:demoday_7/src/features/select_options/select_options_widget.dart';
+import 'package:demoday_7/src/pages/home/bloc/home_bloc.dart';
 import 'package:demoday_7/src/themes/app_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -25,27 +27,40 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 204, vertical: 20),
-        child: Column(
-          children: [
-            Text(
-              AppStrings.headline,
-              style: Theme.of(context).textTheme.displayLarge,
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 204, vertical: 20),
+            child: Column(
+              children: [
+                Text(
+                  AppStrings.headline,
+                  style: Theme.of(context).textTheme.displayLarge,
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      widgetsList[0],
+                      const SizedBox(height: 20),
+                      if (state.picture > 0) ...[
+                        widgetsList[1],
+                        const SizedBox(height: 20),
+                      ],
+                      if (state.numeric > 0) ...[
+                        widgetsList[2],
+                        const SizedBox(height: 20),
+                      ],
+                      widgetsList[3],
+                    ],
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView.separated(
-                itemCount: widgetsList.length,
-                itemBuilder: (context, index) => widgetsList[index],
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 20),
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
