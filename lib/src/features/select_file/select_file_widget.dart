@@ -1,5 +1,6 @@
 import 'dart:convert';
-
+import 'package:demoday_7/src/features/get_results/bloc/get_results_bloc.dart'
+    as getresults;
 import 'package:demoday_7/src/features/select_file/bloc/select_file_bloc.dart';
 import 'package:demoday_7/src/pages/home/model/home_model.dart';
 import 'package:demoday_7/src/themes/app_colors.dart';
@@ -49,8 +50,12 @@ class SelectFileWidgetState extends State<SelectFileWidget> {
                     ),
                     const SizedBox(height: 20),
                     OutlinedButton(
-                      onPressed: () => BlocProvider.of<SelectFileBloc>(context)
-                          .add(const SelectFileEvent.pickImage()),
+                      onPressed: () {
+                        BlocProvider.of<SelectFileBloc>(context)
+                            .add(const SelectFileEvent.pickImage());
+                        BlocProvider.of<getresults.GetResultsBloc>(context)
+                            .add(const getresults.GetResultsEvent.started());
+                      },
                       style: appBarOutlinedButtonStyle,
                       child: const Text(AppStrings.pickNewImage),
                     ),
