@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:demoday_7/src/themes/app_strings.dart';
+import 'package:demoday_7/src/utils/themes/app_strings.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:response_repository/response_repository.dart';
 import 'package:token_repository/token_repository.dart';

@@ -1,14 +1,18 @@
 import 'package:authentication_repository/authentication_repository.dart';
-import 'package:demoday_7/src/app_router.dart';
+import 'package:demoday_7/src/core/data/models/auth_model/auth_model.dart';
+import 'package:demoday_7/src/core/domain/router/app_router.dart';
+import 'package:demoday_7/src/core/presentation/pages/profile/bloc/profile_bloc.dart';
+import 'package:demoday_7/src/core/presentation/pages/profile/profile_cubit.dart';
 import 'package:demoday_7/src/features/get_results/bloc/get_results_bloc.dart';
 import 'package:demoday_7/src/features/input_parameters/bloc/input_parameters_bloc.dart';
 import 'package:demoday_7/src/features/select_file/bloc/select_file_bloc.dart';
 import 'package:demoday_7/src/features/select_options/bloc/select_options_bloc.dart';
-import 'package:demoday_7/src/pages/authorization/login/bloc/login_bloc.dart';
-import 'package:demoday_7/src/pages/authorization/signup/bloc/signup_bloc.dart';
-import 'package:demoday_7/src/pages/home/model/home_model.dart';
-import 'package:demoday_7/src/themes/theme.dart';
+import 'package:demoday_7/src/core/presentation/pages/authorization/login/bloc/login_bloc.dart';
+import 'package:demoday_7/src/core/presentation/pages/authorization/signup/bloc/signup_bloc.dart';
+import 'package:demoday_7/src/core/data/models/service_model/service_model.dart';
+import 'package:demoday_7/src/utils/themes/theme.dart';
 import 'package:parameters_repository/parameters_repository.dart';
+import 'package:profile_prefs_repository/parameters_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +20,7 @@ import 'package:options_repository/options_repository.dart';
 import 'package:response_repository/response_repository.dart';
 import 'package:token_repository/token_repository.dart';
 
-import 'pages/home/bloc/home_bloc.dart';
+import 'core/presentation/pages/service/bloc/service_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -25,9 +29,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<HomeBloc>(
-          create: (context) => HomeBloc()
-            ..add(const HomeEvent.started(
+        BlocProvider<ServiceBloc>(
+          create: (context) => ServiceBloc()
+            ..add(const ServiceEvent.started(
               picture: 0,
               numeric: 0,
             )),
@@ -68,9 +72,21 @@ class App extends StatelessWidget {
                   RepositoryProvider.of<AuthenticationRepository>(context))
             ..add(const SignupEvent.started()),
         ),
+        BlocProvider<ProfileBloc>(
+          create: (context) => ProfileBloc(
+              profilePrefsRepository:
+                  RepositoryProvider.of<ProfilePrefsRepository>(context))
+            ..add(const ProfileEvent.started()),
+        ),
+        BlocProvider<ProfileCubit>(
+          create: (context) => ProfileCubit(),
+        ),
       ],
       child: MultiProvider(
-        providers: [ChangeNotifierProvider(create: (context) => HomeModel())],
+        providers: [
+          ChangeNotifierProvider(create: (context) => ServiceModel()),
+          ChangeNotifierProvider(create: (context) => AuthModel()),
+        ],
         child: MaterialApp.router(
           routerConfig: AppRouter().config(),
           debugShowCheckedModeBanner: false,

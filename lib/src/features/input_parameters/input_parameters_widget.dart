@@ -1,6 +1,6 @@
 import 'package:demoday_7/src/features/input_parameters/bloc/input_parameters_bloc.dart';
-import 'package:demoday_7/src/pages/home/model/home_model.dart';
-import 'package:demoday_7/src/themes/app_colors.dart';
+import 'package:demoday_7/src/core/data/models/service_model/service_model.dart';
+import 'package:demoday_7/src/utils/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,7 +77,7 @@ class InputParametersWidgetState extends State<InputParametersWidget> {
                                     'double' || 'int' => TextField(
                                         onChanged: (value) {
                                           context
-                                              .read<HomeModel>()
+                                              .read<ServiceModel>()
                                               .setParameter(
                                                   i.parameter, value, i.type);
                                         },
@@ -93,7 +93,7 @@ class InputParametersWidgetState extends State<InputParametersWidget> {
                                           labelStyle: const TextStyle(
                                               color: AppColors.black),
                                           labelText: i.name,
-                                          helperText: Provider.of<HomeModel>(
+                                          helperText: Provider.of<ServiceModel>(
                                                   context,
                                                   listen: false)
                                               .getParameterMetric(i.parameter),
@@ -107,12 +107,12 @@ class InputParametersWidgetState extends State<InputParametersWidget> {
                                     'choose' => DropdownMenu(
                                         onSelected: (value) {
                                           context
-                                              .read<HomeModel>()
+                                              .read<ServiceModel>()
                                               .setParameter(i.parameter,
                                                   value ?? 1, i.type);
                                         },
                                         dropdownMenuEntries:
-                                            Provider.of<HomeModel>(context,
+                                            Provider.of<ServiceModel>(context,
                                                     listen: false)
                                                 .getDropDownEntries(
                                                     i.parameter)!
@@ -143,13 +143,13 @@ class InputParametersWidgetState extends State<InputParametersWidget> {
                                             Checkbox(
                                               onChanged: (value) => setState(
                                                 () => context
-                                                    .read<HomeModel>()
+                                                    .read<ServiceModel>()
                                                     .setParameter(
                                                         i.parameter,
                                                         (value!) ? 1 : 0,
                                                         i.type),
                                               ),
-                                              value: Provider.of<HomeModel>(
+                                              value: Provider.of<ServiceModel>(
                                                           context,
                                                           listen: false)
                                                       .getParameter(

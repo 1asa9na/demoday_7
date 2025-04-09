@@ -41,6 +41,8 @@ dependencies:
     path: ./packages/authentication_repository
   token_repository:
     path: ./packages/token_repository
+  profile_prefs_repository:
+    path: ./packages/profile_prefs_repository
   api_client:
     path: ./packages/api_client
 
@@ -57,6 +59,7 @@ dependencies:
   image_picker: ^1.1.2
   dio: ^5.5.0+1
   shared_preferences: ^2.2.3
+  multi_dropdown: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +90,9 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/logo.png
+    - assets/home_card_1.jpg
+    - assets/home_card_2.jpg
+    - assets/home_card_3.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

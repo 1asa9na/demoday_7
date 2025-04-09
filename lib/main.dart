@@ -5,13 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:options_repository/options_repository.dart';
 import 'package:parameters_repository/parameters_repository.dart';
+import 'package:profile_prefs_repository/parameters_repository.dart';
 import 'package:response_repository/response_repository.dart';
 import 'package:token_repository/token_repository.dart';
 
 void main() async {
-  final ApiClient apiClient = ApiClient(
-      baseUrl:
-          'http://localhost:8000');
+  final ApiClient apiClient = ApiClient(baseUrl: 'http://localhost:8000');
   runApp(MultiRepositoryProvider(providers: [
     RepositoryProvider<OptionsRepository>(
       create: (context) => OptionsRepositoryImpl(),
@@ -27,6 +26,9 @@ void main() async {
     ),
     RepositoryProvider<TokenRepository>(
       create: (context) => TokenRepositoryImpl(),
+    ),
+    RepositoryProvider<ProfilePrefsRepository>(
+      create: (context) => ProfilePrefsRepositoryImpl(),
     ),
   ], child: const App()));
 }

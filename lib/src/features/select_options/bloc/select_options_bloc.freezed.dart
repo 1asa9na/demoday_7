@@ -66,6 +66,9 @@ class _$SelectOptionsEventCopyWithImpl<$Res, $Val extends SelectOptionsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SelectOptionsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -82,6 +85,9 @@ class __$$SelectOptionsStartedImplCopyWithImpl<$Res>
   __$$SelectOptionsStartedImplCopyWithImpl(_$SelectOptionsStartedImpl _value,
       $Res Function(_$SelectOptionsStartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SelectOptionsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -229,6 +235,9 @@ class _$SelectOptionsStateCopyWithImpl<$Res, $Val extends SelectOptionsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SelectOptionsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -245,6 +254,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SelectOptionsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -356,6 +368,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SelectOptionsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -401,7 +415,9 @@ class _$SuccessImpl implements Success {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_options));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SelectOptionsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -480,7 +496,10 @@ abstract class Success implements SelectOptionsState {
   const factory Success({required final List<Option> options}) = _$SuccessImpl;
 
   List<Option> get options;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SelectOptionsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -499,6 +518,9 @@ class __$$ErrorImplCopyWithImpl<$Res>
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SelectOptionsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

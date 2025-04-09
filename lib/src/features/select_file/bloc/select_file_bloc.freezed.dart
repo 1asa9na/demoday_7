@@ -72,6 +72,9 @@ class _$SelectFileEventCopyWithImpl<$Res, $Val extends SelectFileEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SelectFileEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -88,6 +91,9 @@ class __$$SelectFileStartedImplCopyWithImpl<$Res>
   __$$SelectFileStartedImplCopyWithImpl(_$SelectFileStartedImpl _value,
       $Res Function(_$SelectFileStartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SelectFileEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -190,6 +196,9 @@ class __$$SelectFilePickImageImplCopyWithImpl<$Res>
   __$$SelectFilePickImageImplCopyWithImpl(_$SelectFilePickImageImpl _value,
       $Res Function(_$SelectFilePickImageImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SelectFileEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -349,6 +358,9 @@ class _$SelectFileStateCopyWithImpl<$Res, $Val extends SelectFileState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SelectFileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -365,6 +377,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SelectFileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -482,6 +497,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SelectFileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -522,7 +539,9 @@ class _$SuccessImpl implements Success {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(pickedImageBytes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SelectFileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -608,7 +627,10 @@ abstract class Success implements SelectFileState {
       _$SuccessImpl;
 
   Uint8List get pickedImageBytes;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SelectFileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -627,6 +649,9 @@ class __$$NoImageSelectedImplCopyWithImpl<$Res>
   __$$NoImageSelectedImplCopyWithImpl(
       _$NoImageSelectedImpl _value, $Res Function(_$NoImageSelectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SelectFileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -741,6 +766,9 @@ class __$$ErrorImplCopyWithImpl<$Res>
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SelectFileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

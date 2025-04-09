@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:api_client/src/errors/network_error.dart';
 import 'package:dio/dio.dart';
 
 class ApiClient implements Interceptor {
@@ -29,9 +28,8 @@ class ApiClient implements Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    final networkError = NetworkError(err);
     log(err.toString());
-    handler.next(networkError);
+    handler.next(err);
   }
 
   @override

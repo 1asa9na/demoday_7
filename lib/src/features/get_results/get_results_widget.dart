@@ -1,9 +1,9 @@
 import 'package:demoday_7/src/features/get_results/bloc/get_results_bloc.dart';
-import 'package:demoday_7/src/pages/home/model/home_model.dart';
-import 'package:demoday_7/src/themes/app_colors.dart';
-import 'package:demoday_7/src/themes/app_strings.dart';
-import 'package:demoday_7/src/themes/button_styles.dart';
-import 'package:demoday_7/src/themes/common.dart';
+import 'package:demoday_7/src/core/data/models/service_model/service_model.dart';
+import 'package:demoday_7/src/utils/themes/app_colors.dart';
+import 'package:demoday_7/src/utils/themes/app_strings.dart';
+import 'package:demoday_7/src/utils/themes/button_styles.dart';
+import 'package:demoday_7/src/utils/themes/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -80,11 +80,12 @@ class GetResultsWidgetState extends State<GetResultsWidget> {
                         onPressed: () =>
                             BlocProvider.of<GetResultsBloc>(context).add(
                           GetResultsEvent.post(
-                            data: Provider.of<HomeModel>(context, listen: false)
+                            data: Provider.of<ServiceModel>(context,
+                                    listen: false)
                                 .getParameters(),
-                            options:
-                                Provider.of<HomeModel>(context, listen: false)
-                                    .getOptions(),
+                            options: Provider.of<ServiceModel>(context,
+                                    listen: false)
+                                .getOptions(),
                           ),
                         ),
                         style: normalSecondaryOutlinedButtonStyle,
@@ -114,10 +115,11 @@ class GetResultsWidgetState extends State<GetResultsWidget> {
                     onPressed: () =>
                         BlocProvider.of<GetResultsBloc>(context).add(
                       GetResultsEvent.post(
-                        data: Provider.of<HomeModel>(context, listen: false)
+                        data: Provider.of<ServiceModel>(context, listen: false)
                             .getParameters(),
-                        options: Provider.of<HomeModel>(context, listen: false)
-                            .getOptions(),
+                        options:
+                            Provider.of<ServiceModel>(context, listen: false)
+                                .getOptions(),
                       ),
                     ),
                     style: normalSecondaryOutlinedButtonStyle,

@@ -1,9 +1,10 @@
 import 'package:demoday_7/src/features/select_options/bloc/select_options_bloc.dart';
-import 'package:demoday_7/src/pages/home/bloc/home_bloc.dart' as home;
-import 'package:demoday_7/src/pages/home/model/home_model.dart';
-import 'package:demoday_7/src/themes/app_colors.dart';
-import 'package:demoday_7/src/themes/app_strings.dart';
-import 'package:demoday_7/src/themes/button_styles.dart';
+import 'package:demoday_7/src/core/presentation/pages/service/bloc/service_bloc.dart'
+    as service;
+import 'package:demoday_7/src/core/data/models/service_model/service_model.dart';
+import 'package:demoday_7/src/utils/themes/app_colors.dart';
+import 'package:demoday_7/src/utils/themes/app_strings.dart';
+import 'package:demoday_7/src/utils/themes/button_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -51,14 +52,14 @@ class SelectOptionsWidgetState extends State<SelectOptionsWidget> {
                                   onPressed: () {
                                     setState(() {
                                       context
-                                          .read<HomeModel>()
+                                          .read<ServiceModel>()
                                           .changeOption(i.option);
                                     });
-                                    var provider = Provider.of<HomeModel>(
+                                    var provider = Provider.of<ServiceModel>(
                                         context,
                                         listen: false);
-                                    context.read<home.HomeBloc>().add(
-                                          home.HomeEvent.started(
+                                    context.read<service.ServiceBloc>().add(
+                                          service.ServiceEvent.started(
                                             picture: provider
                                                 .getOptionCount('picture'),
                                             numeric: provider
@@ -67,7 +68,7 @@ class SelectOptionsWidgetState extends State<SelectOptionsWidget> {
                                         );
                                   },
                                   style: context
-                                          .watch<HomeModel>()
+                                          .watch<ServiceModel>()
                                           .getOption(i.option)
                                       ? activeSecondaryOutlinedButtonStyle
                                       : normalSecondaryOutlinedButtonStyle,
